@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,3 +31,18 @@ route::get("/contact", [\App\Http\Controllers\contactController::class, 'index']
 
 // route om contact formulier te posten naar de database
 route::post("/contact/verstuur", [\App\Http\Controllers\contactController::class, 'store'])->name('contact.store');
+
+// Auth middleware
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    });
+});
+ 
+// Auth routes
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+ 
+Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
