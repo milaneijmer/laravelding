@@ -12,7 +12,7 @@ class accomodatiesController extends Controller
      */
     public function index()
     {
-        $accomodaties = Accomodaties::all();
+        $accomodaties = accomodaties::all();
         return view('accomodaties', ['accomodaties' => $accomodaties]);
     }
 
