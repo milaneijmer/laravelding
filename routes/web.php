@@ -28,5 +28,7 @@ route::get("/tijden", function(){
 
 route::get("/contact", [\App\Http\Controllers\contactController::class, 'index'])->name('contact');
 
+route::get("/attractieDetail", [\App\Http\Controllers\AttractieDetailController::class, 'index'])->name('attractieDetail');
+
 // route om contact formulier te posten naar de database
 route::post("/contact/verstuur", [\App\Http\Controllers\contactController::class, 'store'])->name('contact.store');

@@ -5,11 +5,11 @@
     
     <! -- Loop over alle attracties en toont ze -->
     @foreach($attracties as $attractie)
-    <div class="attractie">
+    <a href="/attractieDetail"><div class="attractie">
         <h1>{{ $attractie->Naam }}</h1>
         <p>{{ $attractie->Beschrijving }}</p>
         <img src="{{Vite::asset($attractie->FotoPad)}}" alt="{{ $attractie->Naam }}" class="attractieFoto">
-    </div>
+    </div></a>
         @endforeach
 </div>
 <! -- Als er geen attracties zijn, toont het dan een melding -->
