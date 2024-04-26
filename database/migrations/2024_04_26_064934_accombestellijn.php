@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->integer('BestelId');
-            $table->integer('AccomodatietId');
+            $table->integer('AccomodatieId');
         });
     }
 
