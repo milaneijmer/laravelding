@@ -1,5 +1,9 @@
 @extends("layout")
 @section("content")
 {{$attractie->Naam}}
+{{$attractie->Beschrijving}}
+{{$attractie->Lengte}}
+{{$attractie->Snelheid}}
+{{$attractie->GKracht}}
 <h1>aaa</h1>
 @endsection

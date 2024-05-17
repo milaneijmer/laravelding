@@ -37,7 +37,7 @@ class AttractiesController extends Controller
      */
     public function show(Attracties $attracties)
     {
-        //
+        return view('attractieDetail', ['attractie' => $attracties]);
     }
 
     /**
