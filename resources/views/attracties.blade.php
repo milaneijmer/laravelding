@@ -21,17 +21,18 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    margin: -10px auto; /* half of the gap and auto for horizontal centering */
-    max-width: 1200px; /* adjust as needed */
+    margin: -10px auto;
+    margin-top: 10px;
+    max-width: 1200px;
 }
 
 .attractie {
-    flex: 1 0 100%; /* grow, shrink, basis */
-    background-color: #f9f9f9;
+    flex: 1 0 100%;
+    background-color: red;
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-    margin: 10px; /* half of the gap */
+    margin: 10px;
     text-decoration: none;
     color: #333;
     box-sizing: border-box;
@@ -39,7 +40,7 @@
 }
 
 .attractieFoto {
-    height: 200px; /* adjust as needed */
+    height: 200px;
     overflow: hidden;
 }
 
@@ -53,7 +54,7 @@
 /* Tablet */
 @media (min-width: 600px) {
     .attractie {
-        flex: 1 0 calc(50% - 20px); /* grow, shrink, basis */
+        flex: 1 0 calc(50% - 20px);
         max-width: calc(50% - 20px);
     }
 }
@@ -61,7 +62,7 @@
 /* Desktop */
 @media (min-width: 900px) {
     .attractie {
-        flex: 1 0 calc(33.33% - 20px); /* grow, shrink, basis */
+        flex: 1 0 calc(33.33% - 20px);
         max-width: calc(33.33% - 20px);
     }
 }
