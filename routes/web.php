@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,3 +33,24 @@ route::get("/attracties/{attracties}", [\App\Http\Controllers\AttractiesControll
 
 // route om contact formulier te posten naar de database
 route::post("/contact/verstuur", [\App\Http\Controllers\contactController::class, 'store'])->name('contact.store');
+
+// Auth middleware
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    });
+});
+ 
+// Auth routes
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+ 
+Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
+Route::post('/register', [AuthController::class, 'register']);
+
+Route::get('/accomodaties', [\App\Http\Controllers\accomodatiesController::class, 'index'])->name('accomodaties');
+route::post("/accomodaties/verstuur", [\App\Http\Controllers\accomodatiesOrdersController::class, 'store'])->name('accomodaties.store');
+
+Route::get('/huren', [\App\Http\Controllers\accomodatiesController::class, 'huurpage'])->name('accHuur');
+
