@@ -7,24 +7,24 @@
     <title>Document</title>
 </head>
 <body>
-    <header class="hoi">
-        <a href="/"><img src="{{ Vite::asset('resources/images/LEGOLAND_PARKS_LOGO.svg') }}" class="logo"></a> 
-            <div class="header-lijst">
-            <ul class="menu">
-                <div class="item"><a href="/tickets"><li>Tickets</li></a></div>
-                <div class="item"><a href="/attracties"><li>Attracties</li></a></div>
-                <div class="item"><a href="/tijden"><li>Tijden</li></a></div>
-                <div class="item"><a href="/contact"><li>Contact</li></a></div>
-            </ul>
-            
-            <div class="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </div>
-    </header>
-
+<header class="hoi">
+<a href="/"><img src="{{ Vite::asset('resources/images/LEGOLAND_PARKS_LOGO.svg') }}" class="logo"></a> 
+    <div class="header-lijst">
+    <ul class="menu">
+        <div class="item"><a href="/tickets"><li>Tickets</li></a></div>
+        <div class="item"><a href="/attracties"><li>Attracties</li></a></div>
+        <div class="item"><a href="/tijden"><li>Tijden</li></a></div>
+        <div class="item"><a href="/contact"><li>Contact</li></a></div>
+        <div class="item"><a href="/accomodaties"><li>Accomodaties</li></a></div>
+    </ul>
+    
+    <div class="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+    </div>
+</div>
+</header>
 @yield('content')
 
 </body>
