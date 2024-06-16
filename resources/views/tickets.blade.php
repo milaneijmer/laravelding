@@ -1,50 +1,110 @@
-@extends("layout")
-@section("content")
-<div class="ticketform">
-    <h1>Tickets</h1>
-        <form action="/tickets/verstuur" method="POST">
-        @csrf
-        <input type="text" name="Naam" placeholder="Naam">
-        <input type="text" name="Email" placeholder="E-mailadres">
-        <input type="text" name="Telefoonnummer" placeholder="Telefoonnummer">
-        <div class="soortTicket">
-        @foreach($tickets as $ticket)
-            {{ $ticket->Soort }} €{{ $ticket->Prijs }}  
-            <input type="number" name="tickets[{{ $ticket->id }}]">
+@extends('layout')
+
+@section('content')
+    <div class="form-container">
+        <h1>Prijzen</h1>
+        @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+<form method="post" action="/tickets/verstuur">
+    @csrf
+    <div>
+        <label for="Naam" class="form-label">Naam</label>
+        <input type="text" name="Naam" id="Naam" class="form-input" required>
+    </div>
+    <div>
+        <label for="Email" class="form-label">Email</label>
+        <input type="email" name="Email" id="Email" class="form-input" required>
+    </div>
+    <div>
+        <label for="Telefoonnummer" class="form-label">Telefoonnummer</label>
+        <input type="text" name="Telefoonnummer" id="Telefoonnummer" class="form-input" required>
+    </div>
+    <table class="form-table">
+        <tr>
+            <th>Soort ticket</th>
+            <th>Prijs</th>
+            <th>Aantal</th>
+        </tr>
+        @foreach ($tickets as $ticket)
+            <tr>
+                <td>{{ $ticket->Soort }}</td>
+                <td>{{ $ticket->Prijs }}</td>
+                <td><input type="number" name="tickets[{{ $ticket->id }}]" class="form-input" min="0" max="15"></td>
+            </tr>
         @endforeach
-        </div>
-        <div class="knopdiv">
-        <button class="knop" type="submit">Bestellen</button>
-        </div>
-        </form>
-</div>
-<style>
-    .ticketform{
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        margin: 0 auto;
-        align-items: center;
-        flex-wrap: wrap;
-    }
-    .soortTicket
-    {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    input{
-        margin: 10px;
-        padding: 5px;
-    }
-    .knop{
-        margin: 10px;
-        padding: 5px;
-    }
-    .knopdiv{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-</style>
+    </table>
+    <button type="submit" class="form-button">Bestel</button>
+</form>
+
+    <style>
+        .form-container {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .form-input, .form-button, .form-table {
+            max-width: 500px;
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        .form-input {
+            background-color: #f2f2f2;
+            border: 2px solid #ccc;
+        }
+        .form-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        .form-button {
+            background-color: #FFD700;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .form-table {
+            border: 1px solid #ccc;
+            margin-bottom: 20px;
+        }
+        .form-table th, .form-table td {
+            padding: 10px;
+            text-align: left;
+        }
+        .form-table td input[type="number"] {
+            width: 50px;
+        }
+        .error-message {
+            color: red;
+            font-size: 12px;
+        }
+        @media (max-width: 600px) {
+            .form-container {
+                padding: 10px;
+            }
+            .form-input, .form-button {
+                padding: 5px;
+            }
+            .form-table th, .form-table td {
+                padding: 5px;
+            }
+        }
+    </style>
 @endsection
