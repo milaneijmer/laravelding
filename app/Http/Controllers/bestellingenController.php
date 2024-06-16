@@ -58,7 +58,7 @@ class bestellingenController extends Controller
                 $bestellijn->save();
             }
         }
-        return redirect()->route('tickets');
+        return redirect()->route('tickets')->with('success', 'Bestelling succesvol.');
     }
 
     /**

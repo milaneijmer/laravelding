@@ -3,8 +3,13 @@
 @section('content')
     <div class="form-container">
         <h1>Prijzen</h1>
+            @if (session('success'))
+        <div class="alert alert-success" style="color: green">
+            {{ session('success') }}
+        </div>
+    @endif
         @if ($errors->any())
-    <div class="alert alert-danger">
+    <div class="alert alert-danger" style="color: red">
         <ul>
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -94,6 +99,22 @@
         .error-message {
             color: red;
             font-size: 12px;
+        }
+        .alert {
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid transparent;
+            border-radius: 0.25rem;
+        }
+        .alert-success {
+            color: #155724;
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+        }
+        .alert-danger {
+            color: #721c24;
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
         }
         @media (max-width: 600px) {
             .form-container {

@@ -3,32 +3,55 @@
 <div id="tijdLijst">
     <div class="tijden">
     <h1>Tijden</h1>
-    <p>Maandag: 10:00 - 18:00</p>
-    <p>Dinsdag: 10:00 - 18:00</p>
-    <p>Woensdag: 10:00 - 18:00</p>
-    <p>Donderdag: 10:00 - 18:00</p>
-    <p>Vrijdag: 10:00 - 18:00</p>
-    <p>Zaterdag: 10:00 - 20:00</p>
-    <p>Zondag: 10:00 - 20:00</p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Dag</th>
+                <th>Tijden</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>Maandag</td><td>10:00 - 18:00</td></tr>
+            <tr><td>Dinsdag</td><td>10:00 - 18:00</td></tr>
+            <tr><td>Woensdag</td><td>10:00 - 18:00</td></tr>
+            <tr><td>Donderdag</td><td>10:00 - 18:00</td></tr>
+            <tr><td>Vrijdag</td><td>10:00 - 18:00</td></tr>
+            <tr><td>Zaterdag</td><td>10:00 - 20:00</td></tr>
+            <tr><td>Zondag</td><td>10:00 - 20:00</td></tr>
+        </tbody>
+    </table>
     </div>
 </div>
-</body>
 <style>
-        #tijdLijst
-        {
-            display: flex;
-            text-align: center;
-            justify-content: center;
-            padding-top: 100px;
-            font-size: 20px;
-        }
-        .tijden
-        {
-            background-color: red;
-            color: white;
-            text-shadow: 2px 2px 2px black;
-            box-shadow: 3px 3px 3px black;
-        }
+#tijdLijst {
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+}
+
+.tijden {
+    width: 50%;
+}
+
+.tijden table {
+    width: 100%;
+    font-size: 20px;
+    border-collapse: collapse;
+    margin-bottom: 50px;
+}
+
+.tijden table, .tijden th, .tijden td {
+    border: 1px solid black;
+}
+
+.tijden th, .tijden td {
+    padding: 15px;
+    text-align: left;
+}
+
+.tijden tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
     </style>
 </html>
 @endsection
