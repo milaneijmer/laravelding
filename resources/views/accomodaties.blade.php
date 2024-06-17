@@ -2,9 +2,8 @@
 @section("content")
 <div class="accomodaties">
     @foreach($accomodaties as $accomodatie)
-        <a href='/huren?variable=$1'><div class="accomodatie">
+        <a href='/accomodaties/{{$accomodatie->id}}'><div class="accomodatie">
             <h1>{{ $accomodatie->Soort_Kamer }}</h1>
-            <p>{{ $accomodatie->Beschrijving }}</p>
             <img src="{{Vite::asset($accomodatie->FotoPad)}}" alt="{{ $accomodatie->Naam }}" class="accomodatieFoto">
             <h1>€{{ $accomodatie->Prijs}} Per nacht</h1>
         </div></a>
@@ -18,12 +17,12 @@
     .accomodatie{
         margin: 20px;
         padding: 5px;
-        border: 1px solid black;
         display: inline-block;
-        background-color: red;
-        color: white;
-        text-shadow: 2px 2px 2px black;
-        box-shadow: 3px 3px 3px black;;
+        background-color: #eaeaea;
+        border-radius: 10px;
+        box-shadow: 10px 10px 10px rgba(0,0,0,0.2);
+        color: #333;
+        box-sizing: border-box;
         margin-left: 5px;
     }
     .accomodaties{

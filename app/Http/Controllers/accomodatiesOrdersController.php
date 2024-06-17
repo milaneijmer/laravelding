@@ -37,17 +37,15 @@ class accomodatiesOrdersController extends Controller
         $bestelling->Naam = $request->input('Naam');
         $bestelling->Telefoonnummer = $request->input('Telefoonnummer');
         $bestelling->Email = $request->input('Email');
+        $bestelling->Datum = $request->input('Datum');
         $bestelling->save();
 
         // Door de ticket lopen
-        foreach ($request->input('accomodaties') as $accomodatiesId => $aantal) {
-            if ($aantal !== null) {
                 $accBestel = new accombestellijn();
                 $accBestel->BestelId = $bestelling->id;
-                $accBestel->AccomodatiesId = $accomodatiesId;
+                $accBestel->AccomodatieId =  $request->input('AccomodatiesId');
                 $accBestel->save();
-            }
-        }
+            
         return redirect()->route('accomodaties');
     }
 
