@@ -1,36 +1,117 @@
-@extends('layout');
-@section('content');
+@extends('layout')
+@section('content')
 
 <h1>Manage Attracties</h1>
 
 <h2>Toevoegen</h2>
-<form action="{{ route('attracties.store') }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('attracties.store') }}" method="POST" enctype="multipart/form-data" class="add-form">
     @csrf
-    <label for="naam">Naam:</label><br>
-    <input type="text" id="naam" name="naam"><br>
-    <label for="beschrijving">Beschrijving:</label><br>
-    <textarea id="beschrijving" name="beschrijving"></textarea><br>
-    <label for="fotopad">Foto:</label><br>
-    <input type="file" id="fotopad" name="fotopad"><br>
-    <label for="lengte">Lengte:</label><br>
-    <input type="number" id="lengte" name="lengte"><br>
-    <label for="snelheid">Snelheid:</label><br>
-    <input type="number" id="snelheid" name="snelheid"><br>
-    <label for="gkracht">GKracht:</label><br>
-    <input type="number" id="gkracht" name="gkracht"><br>
-    <input type="submit" value="Add Attractie">
+    <div class="form-group">
+    <label for="naam">Naam:</label>
+    <input type="text" id="naam" name="naam">
+    </div>
+    <div class="form-group">
+    <label for="beschrijving">Beschrijving:</label>
+    <textarea id="beschrijving" name="beschrijving"></textarea>
+    </div>
+    <div class="form-group">
+    <label for="fotopad">Foto:</label>
+    <input type="file" id="fotopad" name="fotopad">
+    </div>
+    <div class="form-group">
+    <label for="lengte">Lengte:</label>
+    <input type="number" id="lengte" name="lengte">
+    </div>
+    <div class="form-group">
+    <label for="snelheid">Snelheid:</label>
+    <input type="number" id="snelheid" name="snelheid">
+    </div>
+    <div class="form-group">
+    <label for="gkracht">GKracht:</label>
+    <input type="number" id="gkracht" name="gkracht">
+    </div>
+    <input type="submit" value="Add Attractie" class="btn btn-primary">
 </form>
-
-<h2>Verwijderen</h2>
+<div style="margin: 0 auto;">
+<h2 style="margin: 0 auto;">Verwijderen</h2>
 @foreach($attracties as $attractie)
-    <div>
-        <p>{{ $attractie->naam }}</p>
-        <form action="{{ route('attracties.destroy', ['attractie' => $attractie->id]) }}" method="POST">
+    <div class="card">
+        <h5 class="card-title">{{ $attractie->Naam }}</h5>
+        <form action="{{ route('attracties.destroy', ['attractie' => $attractie->id]) }}" method="POST" class="card-action">
             @csrf
             @method('DELETE')
-            <input type="submit" value="Delete Attractie">
+            <button type="submit" class="btn btn-danger">Delete {{ $attractie->naam }}</button>
         </form>
     </div>
 @endforeach
+</div>
 
-@endsection;
+<style>
+    .card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1em;
+    width: 50%;
+    margin-bottom: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin: 0 auto;
+}
+
+.card-title {
+    margin: 0;
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+h2 {
+    text-align: center;
+}
+h1 {
+    text-align: center;
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.form-group label {
+    margin-right: 1em;
+}
+
+.add-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.add-form label {
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+.add-form input[type="text"],
+.add-form textarea,
+.add-form input[type="number"],
+.add-form input[type="file"] {
+    width: 50%;
+    padding: 0.5em;
+    margin-bottom: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+</style>
+@endsection
