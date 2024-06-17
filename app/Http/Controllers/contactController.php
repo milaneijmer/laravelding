@@ -29,6 +29,11 @@ class contactController extends Controller
      */
     public function store(Request $request)
     {   
+        $request->validate([
+            'Naam' => 'required',
+            'Email' => 'required|email',
+            'Bericht' => 'required',
+        ]);
         // gegevens van het formulier
         $contact = new Contact();
         $contact->Naam=$request->input('Naam');
@@ -36,7 +41,7 @@ class contactController extends Controller
         $contact->Bericht=$request->input('Bericht');
 
         $contact->save();
-        return redirect()->route('contact');
+        return redirect()->route('contact')->with('success', 'Message sent successfully');
     }
 
     /**

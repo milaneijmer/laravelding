@@ -30,10 +30,22 @@ class bestellingenController extends Controller
     public function store(Request $request)
     {
         // gegevens van het formulier
+        $request->validate([
+            'Naam' => 'required',
+            'Email' => 'required|email',
+            'Telefoonnummer' => 'required',
+            'tickets' => 'required|array',
+            'tickets.*' => 'nullable|integer|min:0'
+        ]);
+    
+        if (collect($request->tickets)->sum() < 1) {
+            return back()->withErrors(['tickets' => 'Selecteer minimaal 1 ticket.']);
+        }
+    
         $bestelling = new Bestellingen();
-        $bestelling->Naam = $request->input('Naam');
-        $bestelling->Telefoonnummer = $request->input('Telefoonnummer');
-        $bestelling->Email = $request->input('Email');
+        $bestelling->Naam = $request->Naam;
+        $bestelling->Telefoonnummer = $request->Telefoonnummer;
+        $bestelling->Email = $request->Email;
         $bestelling->save();
 
         // Door de ticket lopen
@@ -46,7 +58,7 @@ class bestellingenController extends Controller
                 $bestellijn->save();
             }
         }
-        return redirect()->route('tickets');
+        return redirect()->route('tickets')->with('success', 'Bestelling succesvol.');
     }
 
     /**
