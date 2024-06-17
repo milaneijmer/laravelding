@@ -28,7 +28,7 @@
 
 .attractie {
     flex: 1 0 100%;
-    background-color: red;
+    background-color: #eaeaea;
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.1);

@@ -16,6 +16,7 @@
         <div class="item"><a href="/tijden"><li>Tijden</li></a></div>
         <div class="item"><a href="/contact"><li>Contact</li></a></div>
         <div class="item"><a href="/accomodaties"><li>Accomodaties</li></a></div>
+        <div class="item"><a href="{{ route('attracties.manage') }}"><li>manage</li></a></div>
     </ul>
     
     <div class="hamburger">

@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class AttractiesController extends Controller
 {
+    public function manage()
+    {
+        $attracties = Attracties::all();
+        return view('attractieManage', compact('attracties'));
+    }
     /**
      * Display a listing of the resource.
      */
@@ -29,8 +34,29 @@ class AttractiesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'naam' => 'required',
+            'beschrijving' => 'required',
+            'fotopad' => 'required|image',
+            'lengte' => 'required|numeric',
+            'snelheid' => 'required|numeric',
+            'gkracht' => 'required|numeric',
+        ]);
+
+        $fotopad = $request->file('fotopad')->store('images');
+
+        Attracties::create([
+            'naam' => $request->naam,
+            'beschrijving' => $request->beschrijving,
+            'fotopad' => $fotopad,
+            'lengte' => $request->lengte,
+            'snelheid' => $request->snelheid,
+            'gkracht' => $request->gkracht,
+        ]);
+
+        return redirect()->route('attractieManage');
     }
+
 
     /**
      * Display the specified resource.
@@ -59,8 +85,9 @@ class AttractiesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Attracties $attracties)
+    public function destroy(Attracties $attractie)
     {
-        //
+        $attractie->delete();
+        return redirect()->route('attractieManage');
     }
 }
