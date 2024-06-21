@@ -52,6 +52,9 @@ Route::post('/register', [AuthController::class, 'register']);
 Route::get('/accomodaties', [\App\Http\Controllers\accomodatiesController::class, 'index'])->name('accomodaties');
 route::post("/accomodaties/verstuur", [\App\Http\Controllers\accomodatiesOrdersController::class, 'store'])->name('accomodaties.store');
 
+route::get("/inloggen", [\App\Http\Controllers\UsersController::class, 'index'])->name('users');
+route::post("/inloggen/verstuur", [\App\Http\Controllers\UsersController::class, 'check'])->name('users.check');
+
 route::get("/accomodaties/{accomodaties}", [\App\Http\Controllers\accomodatiesController::class, 'show'])->name('accHuur');
 
 use App\Http\Controllers\AttractiesController;
