@@ -26,13 +26,24 @@
     padding: 20px;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
     box-sizing: border-box;
+    flex-wrap: wrap; /* Allow the flex items to wrap onto new lines */
 }
+
 .attractie-image-container {
     flex: 1;
     margin-right: 10px;
 }
+
 .attractie-info {
     flex: 1;
+}
+
+/* Styles for screens smaller than 600px */
+@media only screen and (max-width: 600px) {
+    .attractie-image-container, .attractie-info {
+        flex: 100%; /* Make them take up the full width on small screens */
+        margin-right: 0; /* Remove the margin on small screens */
+    }
 }
 .attractie-image {
     width: 100%;

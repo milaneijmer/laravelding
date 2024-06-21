@@ -54,3 +54,8 @@ route::post("/accomodaties/verstuur", [\App\Http\Controllers\accomodatiesOrdersC
 
 route::get("/accomodaties/{accomodaties}", [\App\Http\Controllers\accomodatiesController::class, 'show'])->name('accHuur');
 
+use App\Http\Controllers\AttractiesController;
+
+Route::get('/attractieManage', [AttractiesController::class, 'manage'])->name('attracties.manage');
+Route::post('/attracties', [AttractiesController::class, 'store'])->name('attracties.store');
+Route::delete('/attracties/{attractie}', [AttractiesController::class, 'destroy'])->name('attracties.destroy');
