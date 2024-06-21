@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Attracties extends Model
 {
     use HasFactory;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'naam',
+        'beschrijving',
+        'fotopad',
+        'lengte',
+        'snelheid',
+        'gkracht',
+    ];
 }
