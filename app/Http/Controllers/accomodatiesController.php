@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class accomodatiesController extends Controller
 {
+    public function manage()
+    {
+        $accomodaties = accomodaties::all();
+        return view('accomodatieManage', compact('accomodaties'));
+    }
       /**
      * Display a listing of the resource.
      */
@@ -36,7 +41,25 @@ class accomodatiesController extends Controller
      */
     public function store(Request $request)
     {
-         
+        $request->validate([
+            'soort_kamer' => 'required',
+            'beschrijving' => 'required',
+            'fotopad' => 'required|image',
+            'prijs' => 'required|numeric',
+        ]);
+
+        $fotopad = $request->file('fotopad')->store('images');
+        $fotopad = 'storage/app/' . $fotopad;
+        $dbFotopad = str_replace('/', '\\', $fotopad);
+
+        accomodaties::create([
+            'soort_kamer' => $request->soort_kamer,
+            'beschrijving' => $request->beschrijving,
+            'fotopad' => $dbFotopad,
+            'prijs' => $request->prijs,
+        ]);
+
+        return redirect()->route('accomodaties.manage');
     }
 
     /**
@@ -68,6 +91,7 @@ class accomodatiesController extends Controller
      */
     public function destroy(Accomodaties $accomodaties)
     {
-        //
+        $accomodaties->delete();
+        return redirect()->route('accomodaties.manage');
     }
 }

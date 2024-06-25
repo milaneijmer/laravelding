@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\accomodatiesController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -59,3 +60,7 @@ use App\Http\Controllers\AttractiesController;
 Route::get('/attractieManage', [AttractiesController::class, 'manage'])->name('attracties.manage');
 Route::post('/attracties', [AttractiesController::class, 'store'])->name('attracties.store');
 Route::delete('/attracties/{attractie}', [AttractiesController::class, 'destroy'])->name('attracties.destroy');
+
+Route::get('/accomodatiesManage', [accomodatiesController::class, 'manage'])->name('accomodaties.manage');
+Route::post('/accomodaties', [accomodatiesController::class, 'store'])->name('accomodaties.store');
+Route::delete('/accomodaties/{accomodatie}', [accomodatiesController::class, 'destroy'])->name('accomodaties.destroy');
