@@ -1,14 +1,15 @@
 @extends('layout')
 @section('content')
 
-<h1>Manage Attracties</h1>
+<h1>Manage Accomodaties</h1>
 
 <h2>Toevoegen</h2>
-<form action="{{ route('attracties.store') }}" method="POST" enctype="multipart/form-data" class="add-form">
+<div class="form-container">
+<form action="{{ route('accomodaties.store') }}" method="POST" enctype="multipart/form-data" class="add-form">
     @csrf
     <div class="form-group">
-    <label for="naam">Naam:</label>
-    <input type="text" id="naam" name="naam">
+    <label for="soort_kamer">Soort Kamer:</label>
+    <input type="text" id="soort_kamer" name="soort_kamer">
     </div>
     <div class="form-group">
     <label for="beschrijving">Beschrijving:</label>
@@ -19,25 +20,19 @@
     <input type="file" id="fotopad" name="fotopad">
     </div>
     <div class="form-group">
-    <label for="lengte">Lengte:</label>
-    <input type="number" id="lengte" name="lengte">
+    <label for="prijs">Prijs:</label>
+    <input type="number" id="prijs" name="prijs">
     </div>
     <div class="form-group">
-    <label for="snelheid">Snelheid:</label>
-    <input type="number" id="snelheid" name="snelheid">
-    </div>
-    <div class="form-group">
-    <label for="gkracht">GKracht:</label>
-    <input type="number" id="gkracht" name="gkracht">
-    </div>
-    <input type="submit" value="Add Attractie" class="btn btn-primary">
+    <input type="submit" value="Add Accomodaties" class="btn btn-primary">
 </form>
+</div>
 <div style="margin: 0 auto;">
 <h2 style="margin: 0 auto;">Verwijderen</h2>
-@foreach($attracties as $attractie)
+@foreach($accomodaties as $accomodatie)
     <div class="card">
-        <h5 class="card-title">{{ $attractie->Naam }}</h5>
-        <form action="{{ route('attracties.destroy', ['attractie' => $attractie->id]) }}" method="POST" class="card-action">
+        <h5 class="card-title">{{ $accomodatie->Soort_Kamer }}</h5>
+        <form action="{{ route('accomodaties.destroy', ['accomodatie' => $accomodatie->id]) }}" method="POST" class="card-action">
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-danger">Delete</button>
@@ -47,6 +42,9 @@
 </div>
 
 <style>
+    .form-container {
+    margin-bottom: 20px; /* Adjust the value as needed */
+}
     .card {
     display: flex;
     justify-content: space-between;
