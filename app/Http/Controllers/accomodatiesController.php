@@ -21,12 +21,6 @@ class accomodatiesController extends Controller
         return view('accomodaties', ['accomodaties' => $accomodaties]);
     }
 
-    public function huurpage()
-    {
-        $accomodaties = accomodaties::all();
-        return view('accHuur', ['accomodaties' => $accomodaties]);
-    }
-
 
     /**
      * Show the form for creating a new resource.
@@ -67,7 +61,7 @@ class accomodatiesController extends Controller
      */
     public function show(Accomodaties $accomodaties)
     {
-        //
+        return view('acchuur', ['accomodaties' => $accomodaties]);
     }
 
     /**

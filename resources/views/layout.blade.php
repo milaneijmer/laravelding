@@ -18,6 +18,7 @@
         <div class="item"><a href="/accomodaties"><li>Accomodaties</li></a></div>
         <div class="item"><a href="{{ route('attracties.manage') }}"><li>Attractie Manage</li></a></div>
         <div class="item"><a href="{{ route('accomodaties.manage') }}"><li>Accomodatie Manage</li></a></div>
+        <div class="item"><a href="/inloggen"><li>Inloggen</li></a></div>
     </ul>
     
     <div class="hamburger">
