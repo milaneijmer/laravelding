@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\users;
 use Illuminate\Http\Request;
 use PHPUnit\Framework\Attributes\Ticket;
+use Psy\CodeCleaner\FunctionReturnInWriteContextPass;
 
 class UsersController extends Controller
 {
@@ -25,12 +26,19 @@ class UsersController extends Controller
         foreach($users as $user){
             if($user->email == $email && $user->password == $wachtwoord){
                 return view('index');
+                
             }
             else
             {
                 return view('inloggen');
             }
         }
+    }
+
+    public function logout()
+    {
+        users::logout();
+        return view('/');
     }
 
     /**
