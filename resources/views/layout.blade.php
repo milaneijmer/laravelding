@@ -16,14 +16,12 @@
         <div class="item"><a href="/tijden"><li>Tijden</li></a></div>
         <div class="item"><a href="/contact"><li>Contact</li></a></div>
         <div class="item"><a href="/accomodaties"><li>Accomodaties</li></a></div>
+        <div class="item"><a href="/inloggen"><li>Inloggen</li></a></div>
         @auth
-        <div class="item"><a href="{{ route('attracties.manage') }}"><li>Manage</li></a></div>
+        <div class="item"><a href="{{ route('attracties.manage') }}"><li>Attractie Manage</li></a></div>
+        <div class="item"><a href="{{ route('accomodaties.manage') }}"><li>Accomodatie Manage</li></a></div>
         <div class="item"><a href="/logout"><li>Uitloggen</li></a></div>
         @endauth
-        @guest
-        <div class="item"><a href="/login"><li>Inloggen</li></a></div>
-        <div class="item"><a href="/register"><li>Registreren</li></a>
-        @endguest
     </ul>
     
     <div class="hamburger">

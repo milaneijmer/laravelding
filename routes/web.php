@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\accomodatiesController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
@@ -58,7 +59,7 @@ Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('
 Route::post('/register', [AuthController::class, 'register']);
 
 Route::get('/accomodaties', [\App\Http\Controllers\accomodatiesController::class, 'index'])->name('accomodaties');
-route::post("/accomodaties/verstuur", [\App\Http\Controllers\accomodatiesOrdersController::class, 'store'])->name('accomodaties.store');
+route::post("/accomodaties/verstuur", [\App\Http\Controllers\accomodatiesOrdersController::class, 'store'])->name('accomodaties.submit');
 
 route::get("/accomodaties/{accomodaties}", [\App\Http\Controllers\accomodatiesController::class, 'show'])->name('accHuur');
 
@@ -67,3 +68,7 @@ use App\Http\Controllers\AttractiesController;
 Route::get('/attractieManage', [AttractiesController::class, 'manage'])->name('attracties.manage');
 Route::post('/attracties', [AttractiesController::class, 'store'])->name('attracties.store');
 Route::delete('/attracties/{attractie}', [AttractiesController::class, 'destroy'])->name('attracties.destroy');
+
+Route::get('/accomodatiesManage', [accomodatiesController::class, 'manage'])->name('accomodaties.manage');
+Route::post('/accomodaties', [accomodatiesController::class, 'store'])->name('accomodaties.store');
+Route::delete('/accomodaties/{accomodatie}', [accomodatiesController::class, 'destroy'])->name('accomodaties.destroy');
