@@ -89,9 +89,10 @@ class accomodatiesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Accomodaties $accomodaties)
+    public function destroy(accomodaties $accomodatie)
     {
-        $accomodaties->delete();
+        $accomodatie->delete();
         return redirect()->route('accomodaties.manage');
     }
+
 }

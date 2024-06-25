@@ -4,6 +4,7 @@
 <h1>Manage Accomodaties</h1>
 
 <h2>Toevoegen</h2>
+<div class="form-container">
 <form action="{{ route('accomodaties.store') }}" method="POST" enctype="multipart/form-data" class="add-form">
     @csrf
     <div class="form-group">
@@ -19,12 +20,13 @@
     <input type="file" id="fotopad" name="fotopad">
     </div>
     <div class="form-group">
-    <label for="prijs">Lengte:</label>
+    <label for="prijs">Prijs:</label>
     <input type="number" id="prijs" name="prijs">
     </div>
     <div class="form-group">
     <input type="submit" value="Add Accomodaties" class="btn btn-primary">
 </form>
+</div>
 <div style="margin: 0 auto;">
 <h2 style="margin: 0 auto;">Verwijderen</h2>
 @foreach($accomodaties as $accomodatie)
@@ -40,6 +42,9 @@
 </div>
 
 <style>
+    .form-container {
+    margin-bottom: 20px; /* Adjust the value as needed */
+}
     .card {
     display: flex;
     justify-content: space-between;

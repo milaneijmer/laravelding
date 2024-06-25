@@ -51,7 +51,7 @@ Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('
 Route::post('/register', [AuthController::class, 'register']);
 
 Route::get('/accomodaties', [\App\Http\Controllers\accomodatiesController::class, 'index'])->name('accomodaties');
-route::post("/accomodaties/verstuur", [\App\Http\Controllers\accomodatiesOrdersController::class, 'store'])->name('accomodaties.store');
+route::post("/accomodaties/verstuur", [\App\Http\Controllers\accomodatiesOrdersController::class, 'store'])->name('accomodaties.submit');
 
 Route::get('/huren', [\App\Http\Controllers\accomodatiesController::class, 'huurpage'])->name('accHuur');
 

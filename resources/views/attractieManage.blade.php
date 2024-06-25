@@ -40,7 +40,7 @@
         <form action="{{ route('attracties.destroy', ['attractie' => $attractie->id]) }}" method="POST" class="card-action">
             @csrf
             @method('DELETE')
-            <button type="submit" class="btn btn-danger">Delete {{ $attractie->naam }}</button>
+            <button type="submit" class="btn btn-danger">Delete</button>
         </form>
     </div>
 @endforeach
